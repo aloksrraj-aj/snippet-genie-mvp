@@ -1,7 +1,24 @@
-// Fix: We import the library as a whole object to ensure all converters are available
-const curlconverter = require('curlconverter');
+// NEW FIX: Using a dynamic import inside the handler to support ES Modules (ESM)
+// We declare the handler as 'async' to use the 'await' keyword for dynamic import.
 
 exports.handler = async (event, context) => {
+    
+    // --- Dynamic Import of curlconverter ---
+    // This is the FIX for the ERR_REQUIRE_ESM error.
+    let curlconverter;
+    try {
+        // dynamic import returns a Promise, so we need to await it.
+        const module = await import('curlconverter');
+        curlconverter = module.default || module;
+    } catch (importError) {
+        console.error("Failed to dynamically import curlconverter:", importError);
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: "Server setup failed: Could not load converter module." })
+        };
+    }
+    // ----------------------------------------
+
     if (event.httpMethod !== "POST") {
         return { statusCode: 405, body: "Method Not Allowed" };
     }
@@ -18,7 +35,7 @@ exports.handler = async (event, context) => {
 
         // --- REAL CONVERSION LOGIC USING curlconverter ---
         if (targetLang === 'python') {
-            // Using the 'toPython' function from the imported object
+            // curlconverter is now ready to use
             generatedSnippet = curlconverter.toPython(curlInput);
             
             // Add a small header for clarity
