@@ -1,0 +1,12 @@
+{
+  "name": "snippet-genie-mvp",
+  "version": "1.0.0",
+  "description": "cURL to Code Snippet Generator MVP",
+  "main": "index.js",
+  "scripts": {
+    "start": "netlify dev"
+  },
+  "dependencies": {
+    "curlconverter": "^4.2.0"
+  }
+}
