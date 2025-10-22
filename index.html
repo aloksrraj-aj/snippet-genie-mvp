@@ -3,45 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snippet Genie - The Universal API Translator</title>
+    <title>Snippet Genie - The Universal cURL Converter</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
 </head>
 <body>
     <header>
         <h1>✨ Snippet Genie</h1>
+        <p>The Universal cURL to Code Converter</p>
     </header>
 
     <main>
         <div class="converter-box">
             <h2>Paste Your Code/cURL Below:</h2>
-            <textarea id="input-code" placeholder="Example: curl -X GET 'https://api.example.com/data' -H 'Authorization: Bearer xyz'" rows="10"></textarea>
+            <textarea id="input-code" rows="10" placeholder="Example: curl -X GET 'https://api.example.com/data' -H 'Authorization: Bearer xyz'"></textarea>
 
             <div class="controls">
                 <select id="output-language">
                     <option value="python">Python Requests</option>
-                    <option value="nodejs">Node.js (Fetch)</option>
-                    <option value="go">Go (net/http)</option>
-                    </select>
+                    <option value="nodejs">Node.js Fetch (Coming Soon)</option>
+                    <option value="go">Go (Coming Soon)</option>
+                </select>
                 <button id="convert-button">Convert to Snippet</button>
             </div>
             
-            <div id="loading-indicator" style="display:none;">Converting...</div>
-            
+            <div id="loading-indicator" style="display: none; text-align: center; margin-bottom: 20px;">
+                *Converting... Please Wait*
+            </div>
+
             <h2>Generated Snippet:</h2>
-            <pre><code id="output-snippet" class="language-none">Your generated code snippet will appear here.</code></pre>
-            
+            <pre id="output-snippet">Your generated code snippet will appear here.</pre>
             <button id="copy-button">Copy Code</button>
         </div>
 
-        <aside class="affiliate-ad">
-            <p>🚀 Need reliable API monitoring? Try **[HIGH-PAYING AFFILIATE LINK 1]**</p>
-        </aside>
-
-        <footer>
-            <p>Read our guides on API development on our <a href="blog.html">Blog</a>.</p>
-        </footer>
+        <div class="affiliate-ad">
+            <p>
+                🚀 Need reliable API monitoring? Try **[HIGH-PAYING AFFILIATE LINK 1]**
+                <br>
+                💡 Build and test APIs faster with **[HIGH-PAYING AFFILIATE LINK 2]**
+            </p>
+        </div>
     </main>
-    
+
+    <footer>
+        &copy; 2025 Snippet Genie. Built with Netlify & Serverless Functions.
+    </footer>
+
     <script src="app.js"></script>
 </body>
 </html>
