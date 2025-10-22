@@ -1,12 +1,18 @@
 {
-  "name": "snippet-genie-mvp",
+  "name": "snippet-genie",
   "version": "1.0.0",
-  "description": "cURL to Code Snippet Generator MVP",
-  "main": "index.js",
+  "description": "cURL to Code Converter MVP",
+  "main": "index.html",
   "scripts": {
-    "start": "netlify dev"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "curl",
+    "python",
+    "serverless"
+  ],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "curlconverter": "^4.2.0"
   }
 }
