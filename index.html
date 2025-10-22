@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snippet Genie - The Universal API Translator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>✨ Snippet Genie</h1>
+    </header>
+
+    <main>
+        <div class="converter-box">
+            <h2>Paste Your Code/cURL Below:</h2>
+            <textarea id="input-code" placeholder="Example: curl -X GET 'https://api.example.com/data' -H 'Authorization: Bearer xyz'" rows="10"></textarea>
+
+            <div class="controls">
+                <select id="output-language">
+                    <option value="python">Python Requests</option>
+                    <option value="nodejs">Node.js (Fetch)</option>
+                    <option value="go">Go (net/http)</option>
+                    </select>
+                <button id="convert-button">Convert to Snippet</button>
+            </div>
+            
+            <div id="loading-indicator" style="display:none;">Converting...</div>
+            
+            <h2>Generated Snippet:</h2>
+            <pre><code id="output-snippet" class="language-none">Your generated code snippet will appear here.</code></pre>
+            
+            <button id="copy-button">Copy Code</button>
+        </div>
+
+        <aside class="affiliate-ad">
+            <p>🚀 Need reliable API monitoring? Try **[HIGH-PAYING AFFILIATE LINK 1]**</p>
+        </aside>
+
+        <footer>
+            <p>Read our guides on API development on our <a href="blog.html">Blog</a>.</p>
+        </footer>
+    </main>
+    
+    <script src="app.js"></script>
+</body>
+</html>
