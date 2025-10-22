@@ -1,7 +1,6 @@
 // app.js (FINAL VERSION - CLIENT-SIDE CONVERSION)
 
 // 1. DYNAMIC IMPORT: We will import the library inside the conversion function
-// to ensure it only loads when needed.
 let curlConverterModule = null;
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,10 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
         loadingIndicator.style.display = 'block';
 
         try {
-            // Check if the module is loaded, if not, dynamically load it from esm.sh!
+            // Check if the module is loaded, if not, dynamically load it!
             if (!curlConverterModule) {
-                // FIX: Using esm.sh CDN for reliable ES Module loading in browsers (NO NETLIFY CREDIT SPENT!)
-                const module = await import('curlconverter');
+                // FIX: Using the name defined in the <script type="importmap"> in index.html.
+                // This resolves all MIME-type and CDN loading errors.
+                const module = await import('curlconverter'); 
                 curlConverterModule = module.default || module;
                 outputSnippet.textContent = 'Module loaded. Converting...';
             }
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) {
             // This catches errors like malformed cURL input
             console.error("Client-side Conversion Error:", error);
-            outputSnippet.textContent = `Error: Could not parse the cURL command. Check syntax. Details: ${error.message}`;
+            outputSnippet.textContent = `Error: Could not parse the cURL command. Check syntax. Details: ${error.message}. Please try a simpler cURL command.`;
             alert(`Error during conversion: ${error.message}`);
         } finally {
              // Always hide the loading indicator
