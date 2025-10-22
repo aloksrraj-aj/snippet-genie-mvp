@@ -24,12 +24,26 @@ async function convertCode() {
         // We will replace this placeholder with a real fetch call to our Netlify Function soon.
         // For now, let's simulate the output.
         
-        // --- TEMPORARY SIMULATED OUTPUT (to be replaced) ---
-        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API delay
-        const simulatedOutput = `// Generated ${targetLang} snippet:\n// cURL was: ${curlInput.substring(0, 50)}...\n\n// REAL CONVERSION LOGIC IS MISSING. NEXT STEP!`;
-        // ----------------------------------------------------
+        // --- REAL API CALL TO NETLIFY FUNCTION ---
+        const response = await fetch('/.netlify/functions/convert', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                curlInput: curlInput,
+                targetLang: targetLang
+            })
+        });
 
-        outputSnippet.textContent = simulatedOutput;
+        const result = await response.json();
+
+        if (response.ok) {
+            outputSnippet.textContent = result.snippet;
+        } else {
+            outputSnippet.textContent = `Error from server: ${result.error || 'Unknown error.'}`;
+        }
+        // ------------------------------------------
     } catch (error) {
         outputSnippet.textContent = `Error: Failed to convert. Try again.`;
         console.error('Conversion Error:', error);
