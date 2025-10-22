@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check if the module is loaded, if not, dynamically load it from esm.sh!
             if (!curlConverterModule) {
                 // FIX: Using esm.sh CDN for reliable ES Module loading in browsers (NO NETLIFY CREDIT SPENT!)
-                const module = await import('https://esm.sh/curlconverter@12.1.0');
+                const module = await import('curlconverter');
                 curlConverterModule = module.default || module;
                 outputSnippet.textContent = 'Module loaded. Converting...';
             }
